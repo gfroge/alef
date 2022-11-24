@@ -1,6 +1,9 @@
 <template>
-  <page-header ></page-header>
-  <clothing-card :cardData="clothingCards[0]"></clothing-card>
+  <page-header></page-header>
+  <div class="container">
+    <clothing-card :cardData="clothingCards[0]"></clothing-card>
+  </div>
+
 </template>
 
 <script lang="ts">
@@ -14,12 +17,14 @@ export default {
   },
   setup() {
     const clothingCards = [
-      {link:'', likes: 7,imagePath:''}
+      { link: '', likes: 7, imagePath: 'public/assets/images/cards/1.jpg', imagePathWbp: ''}
     ];
-    
-    return{clothingCards}
+
+    return { clothingCards }
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
