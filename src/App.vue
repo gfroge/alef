@@ -17,13 +17,21 @@ export default {
   },
   setup() {
     const clothingCards = [
-      { link: '', likes: 7, imagePath: 'public/assets/images/cards/1.jpg', imagePathWbp: ''}
+      { link: 'link-to-a-product', likes: 7, imagePath: 'public/assets/images/cards/1.jpg', imagePathWbp: '', sizeInPx: 335 , islarge: false }
     ];
 
     return { clothingCards }
   },
 };
 </script>
+
+<style lang="scss">
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: $BLACK;
+}
+</style>
 
 <style scoped>
 
