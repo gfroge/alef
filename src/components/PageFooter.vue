@@ -19,7 +19,7 @@
         </div>
 
         <div class="footer__col">
-            <h4 class="footer__title">Узнайте первыми о новинках и акциях</h4>
+            <h4 class="footer__title email">Узнайте первыми о новинках и акциях</h4>
             <email-form/>
         </div>
     </footer>
@@ -33,20 +33,27 @@ import EmailForm from '@/components/UI/EmailForm.vue'
 <style scoped lang="scss">
 .footer {
     max-width: 1185px;
-    padding: 0 15px;
+    padding: 70px 15px;
     margin: 0 auto;
-
-    &__col {}
+    display: grid;
+    grid-template-columns: 29% 29% 39.16%;
+    // 11.54 -> 1%
+    &__col {
+        
+    }
 
     &__title {
         font-size: 16px;
         line-height: 150%;
         letter-spacing: 0.04em;
         text-transform: uppercase;
+        &.email{
+            margin-bottom: 20px;
+        }
     }
 
     &__links {
-        margin-top: 4px;
+        margin-top: 8px;
         li {
             &:not(:last-child) {
                 margin-bottom: 8px;

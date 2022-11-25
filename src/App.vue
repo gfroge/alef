@@ -1,9 +1,10 @@
 <template>
   <page-header />
-  <main class="container">
-    <cards-section/>
-    <snack-bar/>
+  <main>
+    <cards-section />
+
   </main>
+  <snack-bar />
   <page-footer />
 </template>
 
@@ -20,7 +21,7 @@ export default {
     PageHeader, SnackBar, CardsSection, PageFooter
   },
   setup() {
-    return { }
+    return {}
   },
 };
 </script>
@@ -36,5 +37,7 @@ export default {
 <style lang="scss" scoped>
 main {
   position: relative;
+  max-width: 1415px;
+  margin: 0 auto;
 }
 </style>

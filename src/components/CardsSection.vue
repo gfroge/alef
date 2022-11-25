@@ -54,12 +54,6 @@ const clothingCards = [
             justify-content: center;
         }
 
-        @media(max-width: 450px) {
-            >div {
-                max-width: 100% !important;
-            }
-
-        }
     }
 
     &__grid {
@@ -73,8 +67,11 @@ const clothingCards = [
             justify-items: center;
 
         }
-
         @media(max-width: 450px) {
+            margin-top: 8px;
+            gap: 8px;
+        }
+        @media(max-width: 330px) {
             grid-template-columns: 1fr;
             >div {
                 max-width: 100% !important;

@@ -1,10 +1,11 @@
 <template>
-  <div class="clothing-card" :style="`max-width:${cardData.sizeInPx}px;max-height:${cardData.sizeInPx}px`">
+  <div @click="showOnTap" class="clothing-card"
+    :style="`max-width:${cardData.sizeInPx}px;max-height:${cardData.sizeInPx}px`">
     <picture>
       <source :srcset="cardData.imagePathWebp">
       <img :src="cardData.imagePath" alt="фото одежды">
     </picture>
-    <div class="clothing-card__overlay">
+    <div ref="overlay" class="clothing-card__overlay">
       <div ref="content" class="clothing-card__content">
         <a @click.prevent="copyLink(cardData.link)" href="" class="clothing-card__copy">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,11 +46,13 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import {useSnackbarStore} from '@/stores/snachbar';
+import { useSnackbarStore } from '@/stores/snachbar';
 
+const content = ref();
+const overlay = ref();
 // snackbar
 const snack = useSnackbarStore();
-const {showSnack} = snack;
+const { showSnack } = snack;
 
 const props = defineProps({
   cardData: {
@@ -61,7 +64,15 @@ const copyLink = (data: string) => {
   navigator.clipboard.writeText(data);
   showSnack('Ссылка скопирована!');
 }
-const content = ref();
+
+const showOnTap = () => {
+  overlay.value.classList.add('_visible')
+  setTimeout(() => {
+    overlay.value.classList.remove('_visible')
+  }, 4000);
+}
+
+
 onMounted(() => {
   if (props.cardData.islarge) {
     content.value.classList.add('_large-image');
@@ -74,6 +85,7 @@ onMounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
+
   img {
     width: 100%;
     height: 100%;
@@ -93,6 +105,11 @@ onMounted(() => {
     pointer-events: none;
     opacity: 0;
     transition: all 0.3s ease 0s;
+
+    &._visible {
+      pointer-events: all !important;
+      opacity: 1 !important;
+    }
   }
 
   &:hover &__overlay {
@@ -141,6 +158,7 @@ onMounted(() => {
     border-radius: 40px;
     padding: 5px 15px 15px 15px;
     transition: all 0.3s ease 0s;
+    text-align: center;
 
     &:hover {
       box-shadow: 2px 2px 70px 1px rgba(255, 255, 255, 0.8);
