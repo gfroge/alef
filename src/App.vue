@@ -1,9 +1,9 @@
 <template>
   <page-header />
-  <main>
+  <main class="container">
     <cards-section/>
+    <snack-bar/>
   </main>
-  <snack-bar/>
 </template>
 
 <script lang="ts">
@@ -32,5 +32,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-
+main {
+  position: relative;
+}
 </style>

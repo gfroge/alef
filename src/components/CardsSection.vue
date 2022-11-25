@@ -1,6 +1,6 @@
 <template>
     <section class="cards">
-        <div class="cards__container container">
+        <div class="cards__container">
             <clothing-card :cardData="clothingCards[0]" />
             <div class="cards__grid">
                 <clothing-card :cardData="clothingCards[1]" />
