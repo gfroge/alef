@@ -1,5 +1,5 @@
 <template>
-    <div :class="snack.$state.isVisible ? `snackbar _visible` : `snackbar`" :style="margin" ref="element">
+    <div :class="snack.$state.isVisible ? `snackbar _visible` : `snackbar`">
         {{ snack.$state.text }}
     </div>
 </template>
@@ -12,24 +12,28 @@ import { useSnackbarStore } from '@/stores/snachbar';
 
 const snack = useSnackbarStore();
 
-const element = ref();
+// const element = ref();
 
 
-const changeWidth = (newWidth:number) => {
-    margin = computed( () => {
-    return ` margin-left:-${newWidth/2}px;`;
-})
-}
-let margin = computed( () => {
-    return ` margin-left:0px;`;
-});
+// const changeWidth = (newWidth: number) => {
+//     margin = computed(() => {
+//         return ` margin-left:-${newWidth / 2}px;`;
+//     })
+//     console.log(` margin-left:-${newWidth / 2}px;`);
 
-snack.$subscribe((state) => {
-    if (state.events.newValue) {
-        changeWidth(element.value.clientWidth)
-        console.log(element.value.clientWidth);
-    }
-})
+// }
+// let margin = computed(() => {
+//     return ` margin-left:0px;`;
+// });
+
+// snack.$subscribe((state) => {
+//     if (state.events) {
+//         setInterval(() => {
+//             changeWidth(element.value.offsetWidth)
+//             console.log(element.value.offsetWidth);
+//         }, 1000)
+//     }
+// })
 </script>
   
 <style scoped lang="scss">
@@ -44,7 +48,7 @@ snack.$subscribe((state) => {
     position: absolute;
     max-width: 95vw;
     bottom: 30px;
-    left: 50%;
+    right: 30px;
     cursor: default;
     z-index: 100;
     opacity: 0;

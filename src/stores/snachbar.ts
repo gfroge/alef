@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
 export const useSnackbarStore = defineStore("snack",{
     state: () => ({
-        isVisible: false,
         text: '',
+        isVisible: false,
         marginLeft: 0
     }),
     getters:{
@@ -13,7 +13,7 @@ export const useSnackbarStore = defineStore("snack",{
             this.text = text;
             setTimeout(() => {
                 this.isVisible = false;
-            }, 15000);
+            }, 5000);
         },
     }
 })
