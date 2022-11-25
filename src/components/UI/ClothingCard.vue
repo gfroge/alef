@@ -45,6 +45,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import {useSnackbarStore} from '@/stores/snachbar';
+
+// snackbar
+const snack = useSnackbarStore();
+const {showSnack} = snack;
+
 const props = defineProps({
   cardData: {
     type: Object,
@@ -52,7 +58,8 @@ const props = defineProps({
   },
 })
 const copyLink = (data: string) => {
-  navigator.clipboard.writeText(data)
+  navigator.clipboard.writeText(data);
+  showSnack('Ссылка скопирована!');
 }
 const content = ref();
 onMounted(() => {
@@ -60,13 +67,13 @@ onMounted(() => {
     content.value.classList.add('_large-image');
   }
 })
-
 </script>
 
 <style scoped lang="scss">
 .clothing-card {
   position: relative;
-
+  width: 100%;
+  height: 100%;
   img {
     width: 100%;
     height: 100%;
