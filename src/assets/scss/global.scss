@@ -1,15 +1,39 @@
 // fonts
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 
 // consts
 $BLACK: #333333;
-$GREY-LIGHT:#C4C4C4;
-$GREY-DARK:#828282;
-$GREY-6: #F2F2F2;
+$GREY-LIGHT: #c4c4c4;
+$GREY-DARK: #828282;
+$GREY-6: #f2f2f2;
 
 // general style
-.container{
+.container {
     max-width: 1415px;
     padding: 0 15px;
     margin: 0 auto;
+}
+
+.link-underline {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s ease 0s;
+    &:hover {
+        text-decoration-color: inherit;
+    }
+}
+
+.white-button {
+    padding: 8px 28px;
+    border: 1px solid $BLACK;
+    background-color: #fff;
+    color: $BLACK;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    transition: all 0.5s ease 0s;
+    &:hover{
+        color: #fff;
+        background-color: $BLACK;
+    }
 }

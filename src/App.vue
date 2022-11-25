@@ -4,18 +4,20 @@
     <cards-section/>
     <snack-bar/>
   </main>
+  <page-footer />
 </template>
 
 <script lang="ts">
 import PageHeader from "@/components/PageHeader.vue";
 import CardsSection from '@/components/CardsSection.vue';
+import PageFooter from "@/components/PageFooter.vue";
 
 import SnackBar from '@/components/UI/SnackBar.vue';
 
 export default {
   name: "App",
   components: {
-    PageHeader, SnackBar, CardsSection
+    PageHeader, SnackBar, CardsSection, PageFooter
   },
   setup() {
     return { }
