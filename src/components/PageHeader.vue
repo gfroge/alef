@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header ref="header" class="header">
     <div class="container header__container">
       <a href="" class="header__logo">
         <svg width="64" height="17" viewBox="0 0 64 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,26 +41,64 @@
         </button>
       </div>
     </div>
+    <div @click.self="menuToggle" ref="menu" class="menu">
+      <ul class="menu__content">
+        <li><a href="" class="link-underline">Постельное белье</a></li>
+        <li><a href="" class="link-underline">Одежда для дома</a></li>
+        <li><a href="" class="link-underline">Одежда для улицы</a></li>
+        <li><a href="" class="link-underline">Выход</a></li>
+      </ul>
+    </div>
   </header>
+  <intersection-observer @fixHeader="fixHeader" />
 </template>
 
 <script setup lang="ts">
+import IntersectionObserver from "@/components/IntersectionObserver.vue";
 import { ref } from "vue";
 
 const burger = ref();
+const header = ref();
+const menu = ref();
+
 const menuToggle = () => {
   burger.value.classList.toggle("_active-menu");
+  menu.value.classList.toggle("_active-menu");
+  document.body.classList.toggle('_fixed')
 };
+
+const fixHeader = (isFixed: boolean) => {
+  isFixed ?
+    header.value.classList.add('_fixed') :
+    header.value.classList.remove('_fixed')
+}
 </script>
 
 <style lang="scss" scoped>
 .header {
-  // position: fixed;
-  // z-index: 10;
-  // width: 100%;
   background-color: #fff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   height: 40px;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.6s ease 0s;
+
+  &._fixed {
+    @media(min-width:768px) {
+      opacity: 0;
+    }
+  }
+
+
+  @media(max-width:767px) {
+    position: fixed;
+    z-index: 80;
+    width: 100%;
+    height: 68px;
+  }
 
   &__container {
     width: 100%;
@@ -68,6 +106,10 @@ const menuToggle = () => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media(max-width:767px) {
+      padding: 0 20px;
+    }
   }
 
   &__logo {
@@ -88,8 +130,8 @@ const menuToggle = () => {
     align-items: center;
     justify-content: center;
 
-    &:not(:last-child) {
-      margin-right: 20px;
+    &:not(:first-child) {
+      margin-left: 24px;
     }
 
     transition: all 0.3s ease 0s;
@@ -107,6 +149,9 @@ const menuToggle = () => {
 
     @media (max-width: 767px) {
       display: block;
+      margin: 2px 0 0 20px;
+      position: relative;
+      z-index: 2000;
     }
 
     width: 24px;
@@ -148,4 +193,55 @@ const menuToggle = () => {
     }
   }
 }
+
+.menu {
+  display: none;
+
+  @media(max-width:767px) {
+    display: block;
+  }
+
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  pointer-events: none;
+
+  &__content {
+    overflow: auto;
+    position: absolute;
+    z-index: 200;
+    background-color: #fff;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 80px 30px 43px 30px;
+    transition: top 0.6s ease 0s;
+
+    li {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+
+      a {
+        font-size: 12px;
+        line-height: 133%;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &._active-menu {
+    pointer-events: all;
+  }
+
+  &._active-menu &__content {
+    top: 0;
+  }
+}
 </style>
+

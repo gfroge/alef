@@ -32,8 +32,8 @@ import EmailForm from '@/components/UI/EmailForm.vue'
 
 <style scoped lang="scss">
 .footer {
-    max-width: 1185px;
-    padding: 70px 15px;
+    max-width: 1195px;
+    padding: 70px 20px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 29% 29% 39.16%;

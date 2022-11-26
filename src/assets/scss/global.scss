@@ -8,6 +8,12 @@ $GREY-DARK: #828282;
 $GREY-6: #f2f2f2;
 
 // general style
+body._fixed {
+    @media (max-width: 767px) {
+        overflow: hidden;
+    }
+}
+
 .container {
     max-width: 1415px;
     padding: 0 15px;
@@ -32,7 +38,7 @@ $GREY-6: #f2f2f2;
     font-size: 14px;
     line-height: 143%;
     transition: all 0.5s ease 0s;
-    &:hover{
+    &:hover {
         color: #fff;
         background-color: $BLACK;
     }
