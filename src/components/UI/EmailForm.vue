@@ -42,7 +42,7 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
         input.value.value = '';
         label.value.classList.remove('_active');
     }
-    if (isError) {
+    if (isError && input.value.value) {
         label.value.classList.add('_error');
         input.value.classList.add('_error');
         label.value.innerHTML = 'Введите правильный адрес'
@@ -62,6 +62,8 @@ const showCross = () => {
 const clearInput = () => {
     input.value.value = '';
     cross.value.classList.remove('_visible');
+    label.value.classList.remove('_active');
+    toggleLableClass('out',false);
 }
 
 
