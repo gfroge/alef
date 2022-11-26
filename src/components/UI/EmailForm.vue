@@ -1,17 +1,20 @@
 <template>
     <form action="" class="email-sub">
         <div class="email-sub__container">
-            <label ref="label" class="email-sub__label" for="input">{{initialLabel}}</label>
-            <input v-model="state.email" ref="input" @blur="v$.email.$touch" @focusin="toggleLableClass('in')"
-                @focusout="toggleLableClass('out',v$.email.$error)" name="input" class="email-sub__input" type="email">
-            <button class="email-sub__cross"></button>
+            <label ref="label" class="email-sub__label" for="input">{{ initialLabel }}</label>
+            <input v-model="state.email" ref="input" @input="showCross()" @blur="v$.email.$touch"
+                @focusin="toggleLableClass('in')" @focusout="toggleLableClass('out', v$.email.$error)" name="input"
+                class="email-sub__input" type="email">
+            <span class="email-sub__cross-wrap">
+                <button @click.prevent="clearInput" ref="cross" class="email-sub__cross"></button>
+            </span>
         </div>
         <button type="submit" class="white-button">Подписаться</button>
     </form>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive,  } from "vue";
+import { ref, reactive, } from "vue";
 import { useVuelidate } from '@vuelidate/core'
 import { email } from '@vuelidate/validators'
 
@@ -27,8 +30,9 @@ const v$ = useVuelidate(rules, state);
 
 const label = ref();
 const input = ref();
+const cross = ref()
 
-const initialLabel:string = 'Адрес электронной почты';
+const initialLabel: string = 'Адрес электронной почты';
 
 const toggleLableClass = (type: string, isError: boolean = false) => {
 
@@ -38,22 +42,35 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
         input.value.value = '';
         label.value.classList.remove('_active');
     }
-    if(isError){
+    if (isError) {
         label.value.classList.add('_error');
         input.value.classList.add('_error');
         label.value.innerHTML = 'Введите правильный адрес'
-    }else{
+    } else {
         label.value.classList.remove('_error')
         input.value.classList.remove('_error')
         label.value.innerHTML = initialLabel
     }
 }
+
+const showCross = () => {
+    if (input.value) {
+        cross.value.classList.add('_visible');
+    }
+}
+
+const clearInput = () => {
+    input.value.value = '';
+    cross.value.classList.remove('_visible');
+}
+
+
 </script>
 
 <style scoped lang="scss">
 .email-sub {
     text-align: right;
-    min-width: 300px;
+    min-width: 280px;
     max-width: 452px;
 
     &__container {
@@ -65,13 +82,16 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
         padding: 12px;
         text-align: left;
         width: 100%;
+        max-width: 100%;
         font-weight: 400;
         font-size: 14px;
         line-height: 143%;
         letter-spacing: 0.04em;
         transition: color 0.3s ease 0s;
-        &._error{
+
+        &._error {
             color: rgb(214, 51, 51);
+            border-color: rgb(214, 51, 51);
         }
     }
 
@@ -92,7 +112,8 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
             font-size: 11px;
             bottom: 35px;
         }
-        &._error{
+
+        &._error {
             color: rgb(214, 51, 51);
         }
     }
@@ -101,13 +122,17 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
         margin-top: 35px;
 
     }
-
+    &__cross-wrap{
+        position: absolute;
+        right: 0;
+        top: 8px;
+    }
     &__cross {
         width: 16px;
         height: 16px;
         position: relative;
         margin-left: -22px;
-        opacity: 0;
+        display: none;
         pointer-events: none;
 
         &::before,
@@ -128,6 +153,11 @@ const toggleLableClass = (type: string, isError: boolean = false) => {
 
         &::after {
             transform: rotate(45deg);
+        }
+
+        &._visible {
+            display: inline;
+            pointer-events: all;
         }
     }
 }

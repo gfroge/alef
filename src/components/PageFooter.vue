@@ -18,9 +18,9 @@
             </ul>
         </div>
 
-        <div class="footer__col">
+        <div class="footer__col email">
             <h4 class="footer__title email">Узнайте первыми о новинках и акциях</h4>
-            <email-form/>
+            <email-form />
         </div>
     </footer>
 </template>
@@ -37,9 +37,43 @@ import EmailForm from '@/components/UI/EmailForm.vue'
     margin: 0 auto;
     display: grid;
     grid-template-columns: 29% 29% 39.16%;
-    // 11.54 -> 1%
+
+    @media(max-width:1070px) {
+        grid-template-columns: fit-content(29%) fit-content(29%) auto;
+        gap: 60px;
+        justify-content: center;
+
+    }
+
+    @media(max-width:767px) {
+        max-width: 480px;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "info1 info2"
+            "form form";
+        column-gap: 10px;
+        row-gap: 38px;
+    }
+
+    @media(max-width:450px) {
+        padding: 30px 15px 180px 15px;
+
+    }
+
     &__col {
-        
+        @media(max-width:767px) {
+            grid-area: info1;
+
+            &:nth-child(2) {
+                grid-area: info2
+            }
+
+            &.email {
+                grid-area: form
+            }
+        }
+
     }
 
     &__title {
@@ -47,13 +81,15 @@ import EmailForm from '@/components/UI/EmailForm.vue'
         line-height: 150%;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        &.email{
+
+        &.email {
             margin-bottom: 20px;
         }
     }
 
     &__links {
         margin-top: 8px;
+
         li {
             &:not(:last-child) {
                 margin-bottom: 8px;

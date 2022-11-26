@@ -2,7 +2,6 @@
   <page-header />
   <main>
     <cards-section />
-
   </main>
   <snack-bar />
   <page-footer />
@@ -32,6 +31,7 @@ export default {
   font-weight: 400;
   color: $BLACK;
 }
+
 </style>
 
 <style lang="scss" scoped>

@@ -45,10 +45,10 @@ const snack = useSnackbarStore();
     font-size: 18px;
     line-height: 143%;
 
-    position: absolute;
-    max-width: 95vw;
+    position: fixed;
+    max-width: 400px;
     bottom: 30px;
-    right: 30px;
+    right:3vw;
     cursor: default;
     z-index: 100;
     opacity: 0;

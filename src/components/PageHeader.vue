@@ -55,6 +55,9 @@ const menuToggle = () => {
 
 <style lang="scss" scoped>
 .header {
+  // position: fixed;
+  // z-index: 10;
+  // width: 100%;
   background-color: #fff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   height: 40px;

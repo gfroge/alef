@@ -44,7 +44,7 @@ const clothingCards = [
             width: 50%;
         }
 
-        @media(max-width: 900px) {
+        @media(max-width: 800px) {
             >div {
                 width: 100%;
                 max-width: 550px !important;
@@ -62,7 +62,7 @@ const clothingCards = [
         gap: 16px;
         margin-left: 16px;
 
-        @media(max-width: 900px) {
+        @media(max-width: 800px) {
             margin: 16px 0 0 0;
             justify-items: center;
 
