@@ -13,6 +13,7 @@
             <li @click="chooseSize('L')" class="link-underline">L</li>
         </ul>
     </div>
+    <a class="size__link" href="">Определить размер</a>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +25,7 @@ const openMenu = () => {
     list.value.classList.toggle('_active')
 }
 
-const chooseSize = (size:string) => {
+const chooseSize = (size: string) => {
     sizeChosen.value = size;
 }
 
@@ -59,20 +60,28 @@ const chooseSize = (size:string) => {
             cursor: pointer;
             transition: all 0.3s ease 0s;
             font-size: 22px;
-
-            &:not(:last-child) {
-                margin-bottom: 15px;
-            }
+            padding: 7.5px 0;
 
         }
 
         opacity: 0;
         pointer-events: none;
         transition: all 0.3s ease 0s;
+
         &._active {
             opacity: 1;
             pointer-events: all;
         }
+    }
+
+    &__link {
+        margin-top: 12px;
+        display: block;
+        font-size: 14px;
+        line-height: 143%;
+
+        letter-spacing: 0.04em;
+        text-decoration-line: underline;
     }
 }
 </style>
