@@ -7,8 +7,8 @@
 <script setup lang="ts">
 // is white , center/right
 // todo: use store to show it
-import { ref, computed } from "vue";
-import { useSnackbarStore } from '@/stores/snachbar';
+// import { ref, computed } from "vue";
+import { useSnackbarStore } from '@/stores/snackbar';
 
 const snack = useSnackbarStore();
 

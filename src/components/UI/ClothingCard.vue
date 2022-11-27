@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useSnackbarStore } from '@/stores/snachbar';
+import { useSnackbarStore } from '@/stores/snackbar';
 
 const content = ref();
 const overlay = ref();
