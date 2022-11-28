@@ -31,7 +31,9 @@
                     <add-to-cart :productName="productName" />
                 </div>
             </div>
-            <div class="product__divider"></div>
+            <div class="product__divider-wrap">
+                <div class="product__divider"></div>
+            </div>
             <div class="product__body">
                 <product-other-links />
             </div>
@@ -157,6 +159,13 @@ const productName: string = 'Пижама для девочек';
         height: 1px;
         width: 100%;
         margin: 28px 0;
+
+        &-wrap {
+            @media(min-width:768px) {
+                margin-left: 16px;
+            }
+        }
+
     }
 
     &__all-styles {
