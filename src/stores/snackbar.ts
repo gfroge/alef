@@ -8,6 +8,7 @@ export const useSnackbarStore = defineStore("snack", {
     getters: {
     },
     actions: {
+        // ! fix
         showSnack(text: string) {
             this.isVisible = true;
             this.text = text;

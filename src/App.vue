@@ -41,7 +41,7 @@ main {
   position: relative;
   max-width: 1415px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding-top: 66px;
   @media(max-width:767px){
     padding-top: 68px;
   }

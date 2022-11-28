@@ -49,6 +49,7 @@ const showImage = async (index: number) => {
 .gallery {
     position: relative;
     max-width: 686px;
+
     &__slides {
         top: 24px;
         left: 24px;
@@ -56,9 +57,11 @@ const showImage = async (index: number) => {
 
     &__main-image {
         transition: all 0.3s ease 0s;
-        img{
+
+        img {
             max-width: 100%;
         }
+
         &._hidden {
             opacity: 0;
         }
@@ -68,6 +71,7 @@ const showImage = async (index: number) => {
 .slides {
     position: absolute;
     z-index: 2;
+
     &__slide {
         display: block;
         max-width: 70px;
@@ -82,6 +86,16 @@ const showImage = async (index: number) => {
 
         &:hover {
             opacity: 1;
+        }
+
+        @media(max-width:1030px) {
+            max-width: 60px;
+            max-height: 79px;
+        }
+        @media(max-width:767px) {
+            max-width: 40px;
+            max-height: 52px;
+            margin-bottom: 4px;
         }
     }
 }

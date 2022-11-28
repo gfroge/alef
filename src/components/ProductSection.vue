@@ -1,38 +1,40 @@
 <template>
     <section class="product">
         <photo-gallery />
-        <div class="product__body">
-            <div>
-                <h2 class="product__title">{{ productName }}</h2>
-                <div class="product__vendor-code">Арт. 02765/46</div>
-            </div>
-
-            <product-testimonials :stars="4" :testimonialsNumber="14" />
-
-            <div class="product__price price">
-                <div class="price__wrapper">
-                    <span class="price__number">800 ₽</span>
-                    <span class="price__old">1 500 ₽</span>
-                    <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L9 8L1 14.5" stroke="#333333" />
-                    </svg>
-
+        <div>
+            <div class="product__body">
+                <div>
+                    <h2 class="product__title">{{ productName }}</h2>
+                    <div class="product__vendor-code">Арт. 02765/46</div>
                 </div>
-                <div class="price__discount-wrapper">
-                    <product-discount>скидка -36%</product-discount>
-                    <product-discount>акция -20%</product-discount>
+
+                <product-testimonials :stars="4" :testimonialsNumber="14" />
+
+                <div class="product__price price">
+                    <div class="price__wrapper">
+                        <span class="price__number">800 ₽</span>
+                        <span class="price__old">1 500 ₽</span>
+                        <svg width="10" height="15" viewBox="0 0 10 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 1L9 8L1 14.5" stroke="#333333" />
+                        </svg>
+
+                    </div>
+                    <div class="price__discount-wrapper">
+                        <product-discount>скидка -36%</product-discount>
+                        <product-discount>акция -20%</product-discount>
+                    </div>
+                </div>
+
+                <product-size />
+
+                <div class="product__cart">
+                    <add-to-cart :productName="productName" />
                 </div>
             </div>
-
-            <product-size />
-
-            <div class="product__cart">
-                <add-to-cart :productName="productName" />
-            </div>
-
             <div class="product__divider"></div>
-
-            <product-other-links />
+            <div class="product__body">
+                <product-other-links />
+            </div>
         </div>
     </section>
     <a href="" class="product__all-styles">Посмотреть все стили</a>
@@ -89,8 +91,41 @@ const productName: string = 'Пижама для девочек';
 .product {
     display: flex;
 
+    >div {
+        width: 50%;
+    }
+
+    @media(max-width:767px) {
+        max-width: 450px;
+        margin: 0 auto;
+        display: block;
+
+        >div {
+            width: auto;
+        }
+    }
+
     &__body {
-        padding: 22px 36px;
+        &:first-child {
+            padding: 22px 36px 0 36px;
+        }
+
+        &:last-child {
+            padding: 0px 36px 22px 36px;
+        }
+
+        @media(max-width:767px) {
+            padding: 24px 20px;
+
+            &:first-child {
+                padding: 24px 20px 0 20px;
+            }
+
+            &:last-child {
+                padding: 0px 20px 24px 20px;
+            }
+        }
+
     }
 
     &__title {
@@ -113,7 +148,7 @@ const productName: string = 'Пижама для девочек';
         margin-bottom: 33px;
     }
 
-    &__cart{
+    &__cart {
         margin-top: 40px;
     }
 
