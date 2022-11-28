@@ -91,6 +91,8 @@ const productName: string = 'Пижама для девочек';
 }
 
 .product {
+    max-width: 1390px;
+    margin: 0 auto;
     display: flex;
 
     >div {

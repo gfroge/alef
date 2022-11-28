@@ -37,6 +37,8 @@ const clothingCards = [
   
 <style scoped lang="scss">
 .cards {
+    max-width: 1390px;
+    margin: 0 auto;
     @media(min-width: 768px) {
         padding-bottom: 60px;
     }
