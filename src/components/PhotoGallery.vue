@@ -20,11 +20,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 const data = [
-    { src: '/assets/images/gallery/1.min.jpg', alt: 'фото пижамы', srcWebp: '/assets/images/gallery/1.min.webp', largeSrc: '/assets/images/gallery/1.webp', largeSrcWebp: '/assets/images/gallery/1.webp' },
-    { src: '/assets/images/gallery/2.min.jpg', alt: 'фото пижамы', srcWebp: '/assets/images/gallery/2.min.webp', largeSrc: '/assets/images/gallery/2.webp', largeSrcWebp: '/assets/images/gallery/2.webp' },
-    { src: '/assets/images/gallery/3.min.jpg', alt: 'фото пижамы', srcWebp: '/assets/images/gallery/3.min.webp', largeSrc: '/assets/images/gallery/3.webp', largeSrcWebp: '/assets/images/gallery/3.webp' },
-    { src: '/assets/images/gallery/4.min.jpg', alt: 'фото пижамы', srcWebp: '/assets/images/gallery/4.min.webp', largeSrc: '/assets/images/gallery/4.webp', largeSrcWebp: '/assets/images/gallery/4.webp' },
-    { src: '/assets/images/gallery/5.min.jpg', alt: 'фото пижамы', srcWebp: '/assets/images/gallery/5.min.webp', largeSrc: '/assets/images/gallery/5.webp', largeSrcWebp: '/assets/images/gallery/5.webp' }
+    { src: 'assets/images/gallery/1.min.jpg', alt: 'фото пижамы', srcWebp: 'assets/images/gallery/1.min.webp', largeSrc: 'assets/images/gallery/1.webp', largeSrcWebp: 'assets/images/gallery/1.webp' },
+    { src: 'assets/images/gallery/2.min.jpg', alt: 'фото пижамы', srcWebp: 'assets/images/gallery/2.min.webp', largeSrc: 'assets/images/gallery/2.webp', largeSrcWebp: 'assets/images/gallery/2.webp' },
+    { src: 'assets/images/gallery/3.min.jpg', alt: 'фото пижамы', srcWebp: 'assets/images/gallery/3.min.webp', largeSrc: 'assets/images/gallery/3.webp', largeSrcWebp: 'assets/images/gallery/3.webp' },
+    { src: 'assets/images/gallery/4.min.jpg', alt: 'фото пижамы', srcWebp: 'assets/images/gallery/4.min.webp', largeSrc: 'assets/images/gallery/4.webp', largeSrcWebp: 'assets/images/gallery/4.webp' },
+    { src: 'assets/images/gallery/5.min.jpg', alt: 'фото пижамы', srcWebp: 'assets/images/gallery/5.min.webp', largeSrc: 'assets/images/gallery/5.webp', largeSrcWebp: 'assets/images/gallery/5.webp' }
 ];
 
 const mainImage = ref();

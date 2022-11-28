@@ -27,11 +27,11 @@ const isLarge = (size:number) => {
 }
 
 const clothingCards = [
-    { link: 'link-to-a-product', likes: 170, imagePath: '/assets/images/cards/0.jpg', imagePathWebp: '/assets/images/cards/0.webp', sizeInPx: 686, islarge: isLarge(686) },
-    { link: 'link-to-a-product', likes: 112, imagePath: '/assets/images/cards/1.jpg', imagePathWebp: '/assets/images/cards/1.webp', sizeInPx: 335, islarge: isLarge(335) },
-    { link: 'link-to-a-product', likes: 85, imagePath: '/assets/images/cards/2.jpg', imagePathWebp: '/assets/images/cards/2.webp', sizeInPx: 335, islarge: isLarge(335) },
-    { link: 'link-to-a-product', likes: 200, imagePath: '/assets/images/cards/3.jpg', imagePathWebp: '/assets/images/cards/3.webp', sizeInPx: 335, islarge: isLarge(335) },
-    { link: 'link-to-a-product', likes: 200, imagePath: '/assets/images/cards/4.jpg', imagePathWebp: '/assets/images/cards/4.webp', sizeInPx: 335, islarge: isLarge(335) }
+    { link: 'link-to-a-product', likes: 170, imagePath: 'assets/images/cards/0.jpg', imagePathWebp: 'assets/images/cards/0.webp', sizeInPx: 686, islarge: isLarge(686) },
+    { link: 'link-to-a-product', likes: 112, imagePath: 'assets/images/cards/1.jpg', imagePathWebp: 'assets/images/cards/1.webp', sizeInPx: 335, islarge: isLarge(335) },
+    { link: 'link-to-a-product', likes: 85, imagePath: 'assets/images/cards/2.jpg', imagePathWebp: 'assets/images/cards/2.webp', sizeInPx: 335, islarge: isLarge(335) },
+    { link: 'link-to-a-product', likes: 200, imagePath: 'assets/images/cards/3.jpg', imagePathWebp: 'assets/images/cards/3.webp', sizeInPx: 335, islarge: isLarge(335) },
+    { link: 'link-to-a-product', likes: 200, imagePath: 'assets/images/cards/4.jpg', imagePathWebp: 'assets/images/cards/4.webp', sizeInPx: 335, islarge: isLarge(335) }
 ];
 </script>
   
