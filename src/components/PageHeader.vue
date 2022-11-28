@@ -50,12 +50,10 @@
       </ul>
     </div>
   </header>
-  <intersection-observer @fixHeader="fixHeader" />
 </template>
 
 <script setup lang="ts">
-import IntersectionObserver from "@/components/IntersectionObserver.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const burger = ref();
 const header = ref();
@@ -67,11 +65,53 @@ const menuToggle = () => {
   document.body.classList.toggle('_fixed')
 };
 
-const fixHeader = (isFixed: boolean) => {
-  isFixed ?
-    header.value.classList.add('_fixed') :
-    header.value.classList.remove('_fixed')
+let lastKnownScrollY: number = 0
+let currentScrollY: number = 0
+let ticking: boolean = false
+const classes = {
+  pinned: "_visible",
+  unpinned: "_hidden",
 }
+
+const onScroll = () => {
+  currentScrollY = window.pageYOffset
+  requestTick();
+}
+
+const requestTick = () => {
+  if (!ticking) {
+    requestAnimationFrame(update)
+  }
+  ticking = true
+}
+const update = () => {
+  if (currentScrollY < lastKnownScrollY) {
+    pin()
+  } else if (currentScrollY > lastKnownScrollY) {
+    unpin()
+  }
+  lastKnownScrollY = currentScrollY
+  ticking = false
+}
+const pin = () => {
+  if (header.value.classList.contains(classes.unpinned)) {
+    header.value.classList.remove(classes.unpinned)
+    header.value.classList.add(classes.pinned)
+  }
+}
+const unpin = () => {
+  if (
+    header.value.classList.contains(classes.pinned) ||
+    !header.value.classList.contains(classes.unpinned)
+  ) {
+    header.value.classList.remove(classes.pinned)
+    header.value.classList.add(classes.unpinned)
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("scroll", onScroll, false)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -86,12 +126,14 @@ const fixHeader = (isFixed: boolean) => {
   left: 0;
   transition: all 0.6s ease 0s;
 
-  &._fixed {
-    @media(min-width:768px) {
-      opacity: 0;
-    }
-  }
+  &._hidden {
 
+    transform: translateY(-65px);
+  }
+  &._visible {
+
+    transform: translateY(0);
+  }
 
   @media(max-width:767px) {
     position: fixed;

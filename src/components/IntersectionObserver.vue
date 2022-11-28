@@ -29,9 +29,10 @@ onMounted(() => { observer.observe(observerElement.value) })
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .observer {
-    height: 0px;
+    height: 2px;
+    background-color: red;
     z-index: 10000;
     pointer-events: none;
     width: 100%;
